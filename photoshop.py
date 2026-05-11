@@ -1,4 +1,3 @@
-from curses import A_HORIZONTAL
 import tkinter as tk
 
 
@@ -70,8 +69,6 @@ def setup_gui(root):
 
     blue_label = tk.Label(text="B")
     blue_label.grid(column=0, row=5)
-
-    """
 
 
 def main():
