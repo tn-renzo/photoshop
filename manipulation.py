@@ -5,7 +5,7 @@ from PIL import Image
 class EditedImage:
     def __init__(self, path):
         self.path = path
-        self.image: np.ndarray
+        self.image: np.ndarray | None = None
         self.load_image()
 
     def load_image(self):
@@ -34,9 +34,8 @@ class EditedImage:
 def main() -> None:
     image = EditedImage(path="images/example02.jpg")
 
-    image.set_blue(255)
-    image.set_red(255)
-    image.set_green(255)
+    image.set_blue(23)
+    image.set_red(65)
 
     plt.imshow(image.return_img())
     plt.show()
