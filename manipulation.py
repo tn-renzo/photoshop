@@ -27,15 +27,30 @@ def set_green(image: np.ndarray, rgb_value: int) -> np.ndarray:
     image[:, :, 1] = rgb_value
     return image
 
+def set_red(image: np.ndarray, rgb_value: int) -> np.ndarray:
+    if rgb_value < 0 or rgb_value < 255:
+        print("Invalid RGB Value")
+
+    image[:, : , 0] = rgb_value
+    return image
+
+def set_blue(image: np.ndarray, rgb_value: int) -> np.ndarray:
+    if rgb_value < 0 or rgb_value < 255:
+        print("Invalid RGB Value")
+
+    image[:, :, 2] = rgb_value
+    return image
+
 def main() -> None:
-    IMAGE_PATH: str = "images/example02.jpg" 
-    image_array = load_image(IMAGE_PATH)
+    image_path: str = "images/example02.jpg"
+    image_array = load_image(image_path)
 
    
     edit = image_array.copy()
-    edit = set_green(edit, 0)
+    edit = set_green(edit, 34)
+    edit = set_blue(edit, 84)
     plt.imshow(edit)
     plt.show()
-    
+
 if __name__ == '__main__':
     main()
