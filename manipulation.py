@@ -33,7 +33,7 @@ def main() -> None:
 
    
     edit = image_array.copy()
-    edit = set_green(edit, 255)
+    edit = set_green(edit, 0)
     plt.imshow(edit)
     plt.show()
     
