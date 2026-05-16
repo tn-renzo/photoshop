@@ -23,7 +23,7 @@ def invert(image):
 def set_green(image: np.ndarray, rgb_value: int) -> np.ndarray:
     if rgb_value < 0 or rgb_value > 255:
         print("Invalid RGB Value")
-        return image # Early unmodified return
+        return image
 
     image[:, :, 1] = rgb_value
     return image
