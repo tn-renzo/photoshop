@@ -17,8 +17,9 @@ def load_image(image_path) -> np.ndarray:
 def grayscale(image):
     pass
 
-def invert(image):
-    pass
+def invert(image: np.ndarray):
+    inverted = 255 - image
+    return inverted
 
 def set_green(image: np.ndarray, rgb_value: int) -> np.ndarray:
     if rgb_value < 0 or rgb_value > 255:
@@ -46,12 +47,15 @@ def set_blue(image: np.ndarray, rgb_value: int) -> np.ndarray:
 
 def main() -> None:
     image_path: str = "images/example02.jpg"
-    image_array = load_image(image_path)
+    original: np.ndarray = load_image(image_path)
 
    
-    edit = image_array.copy()
-    edit = set_green(edit, 34)
-    edit = set_blue(edit, 84)
+    edit = original.copy()
+    #edit = set_green(edit, 34)
+    #edit = set_blue(edit, 84)
+
+    edit = invert(edit)
+    edit = invert(edit)
     plt.imshow(edit)
     plt.show()
 
