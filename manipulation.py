@@ -14,10 +14,15 @@ def load_image(image_path) -> np.ndarray:
     img = Image.open(image_path)
     return np.array(img)
 
-def grayscale(image):
-    pass
+def grayscale(image: np.ndarray) -> np.ndarray:
+    # average each channel using weighted averages
+    gray = (image[:, :, 0] * 0.299 +
+            image[:, :, 1] * 0.587 +
+            image[:, :, 2] * 0.114)
+    # clamp the result to 0-255 and round floats
+    return np.clip(gray, 0, 255).astype(np.uint8)
 
-def invert(image: np.ndarray):
+def invert(image: np.ndarray) -> np.ndarray:
     inverted = 255 - image
     return inverted
 
@@ -49,14 +54,10 @@ def main() -> None:
     image_path: str = "images/example02.jpg"
     original: np.ndarray = load_image(image_path)
 
-   
     edit = original.copy()
-    #edit = set_green(edit, 34)
-    #edit = set_blue(edit, 84)
+    edit = grayscale(edit)
 
-    edit = invert(edit)
-    edit = invert(edit)
-    plt.imshow(edit)
+    plt.imshow(edit, cmap='gray') # cmap is needed for proper graysscale
     plt.show()
 
 if __name__ == '__main__':
